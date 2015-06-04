@@ -16,7 +16,7 @@
     "schema"
   ],
   "author": "Pedro Miranda",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/opedromiranda/o-mapper/issues"
   },
