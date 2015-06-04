@@ -1,0 +1,31 @@
+{
+  "name": "o-mapper",
+  "version": "0.1.0",
+  "description": "Object mapper",
+  "main": "lib/o-mapper.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opedromiranda/o-mapper.git"
+  },
+  "keywords": [
+    "object",
+    "mapper",
+    "schema"
+  ],
+  "author": "Pedro Miranda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opedromiranda/o-mapper/issues"
+  },
+  "homepage": "https://github.com/opedromiranda/o-mapper",
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-coverage": "^0.3.36",
+    "gulp-istanbul": "^0.9.0",
+    "gulp-mocha": "^2.1.1"
+  }
+}
