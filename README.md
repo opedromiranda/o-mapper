@@ -3,7 +3,7 @@
 
 
 ## What
-Validation and convertion of given object to another.
+Validation and conversion of a given object to another.
 
 Like this:
 ```json
@@ -30,7 +30,7 @@ var schema = {
     full_name: {
         key: ['firstName', 'lastName'],
         handler: function(first, last) {
-            return first + last;
+            return first + ' ' + last;
         }
     },
     birth_year: {
