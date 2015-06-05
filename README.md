@@ -8,17 +8,22 @@ Validation and conversion of a given object to another.
 Like this:
 ```json
 {
-    "firstName": "Toby",
-    "lastName": "Flenderson",
-    "birthYear": 1971
+    "first_name": "Toby",
+    "last_name": "Flenderson",
+    "birth_date": "1971-04-01",
+    "job_name": "HR",
+    "extra_data": {
+        "orders": []
+    }
 }
 ```
 to this:
-```json
+```javascript
 {
     "full_name": "Toby Flenderson",
-    "birth_year": 1971,
-    "is_annoying": true
+    "job": "HR",
+    "birth_date": new Date("1971-04-01"),
+    "orders": []
 }
 ```
 
@@ -26,32 +31,48 @@ to this:
 ## How
 ```javascript
 var omapper = require('o-mapper');
-var schema = {
-    full_name: {
-        key: ['firstName', 'lastName'],
-        handler: function(first, last) {
-            return first + ' ' + last;
-        }
-    },
-    birth_year: {
-        key: 'birthYear',
-        required: true
-    },
-    is_annoying: {
-        default: true
-    }
-};
-var input = {
-    firstName: "Toby",
-    lastName: "Flenderson",
-    birthYear: '1971'
-};
+
+var schema = { ... };
+var input = { ... };
 
 var result = omapper(input, schema);
 ```
 
-### Version
-0.1
+## Schema
+Schemas are objects that will dictate what the final object will contain and where to get the values from the source object.
+Each key from the schema represents a key of the final object.
+
+```javascript
+var schema = {
+
+    // key property specifies what key to look for in the source object
+    job: {
+        key: 'job_name'
+    },
+
+    // when multiple keys are selected, an handler is required to process the multiple values
+    full_name: {
+        key: ['fist_name', 'last_name']
+        handler: function(first, last) {
+            return first + ' ' + last;
+        }
+    },
+
+    // handlers can also be used for single values
+    birth_date: {
+        handler: function (bd) {
+            return new Date(bd);
+        }
+    },
+
+    // dot notation can also be used
+    // default values can be set in case property doesn't exist
+    orders: {
+        key: 'data.orders',
+        default: []
+    }
+}
+```
 
 License
 ----
