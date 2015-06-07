@@ -59,10 +59,13 @@ var schema = {
     },
 
     // handlers can also be used for single values
+    // the key property can be omitted if it matches the final object
+    // a property can be set as required
     birth_date: {
         handler: function (bd) {
             return new Date(bd);
-        }
+        },
+        required: true
     },
 
     // dot notation can also be used

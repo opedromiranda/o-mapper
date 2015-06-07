@@ -3,7 +3,7 @@ var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 
 gulp.task('test', function (cb) {
-    //return gulp.src('**/__tests__/*.js', { read: false })
+
     gulp.src(['./lib/*.js'])
         .pipe(istanbul())
         .pipe(istanbul.hookRequire()) // Force `require` to return covered files
