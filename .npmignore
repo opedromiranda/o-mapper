@@ -1,2 +1,3 @@
+coverage
 lib/__tests__
 .travis.yml
