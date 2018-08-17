@@ -1,6 +1,6 @@
 {
   "name": "o-mapper",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Object mapper",
   "main": "lib/o-mapper.js",
   "scripts": {
