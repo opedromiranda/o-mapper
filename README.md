@@ -30,12 +30,12 @@ to this:
 
 ## How
 ```javascript
-var omapper = require('o-mapper');
+const omapper = require('o-mapper');
 
-var schema = { ... };
-var input = { ... };
+const schema = { ... };
+const input = { ... };
 
-var result = omapper(input, schema);
+const result = omapper(input, schema);
 ```
 
 ## Schema
@@ -43,38 +43,34 @@ Schemas are objects that will dictate what the final object will contain and whe
 Each key from the schema represents a key of the final object.
 
 ```javascript
-var schema = {
+const schema = {
 
     // key property specifies what key to look for in the source object
     job: {
-        key: 'job_name'
+        key: 'job_name',
     },
 
     // when multiple keys are selected, an handler is required to process the multiple values
     full_name: {
-        key: ['fist_name', 'last_name']
-        handler: function(first, last) {
-            return first + ' ' + last;
-        }
+        key: ['fist_name', 'last_name'],
+        handler: (first, last) => `${first} ${last}`,
     },
 
     // handlers can also be used for single values
     // the key property can be omitted if it matches the final object
     // a property can be set as required
     birth_date: {
-        handler: function (bd) {
-            return new Date(bd);
-        },
-        required: true
+        handler: bd => new Date(bd),
+        required: true,
     },
 
     // dot notation can also be used
     // default values can be set in case property doesn't exist
     orders: {
         key: 'data.orders',
-        default: []
-    }
-}
+        default: [],
+    },
+};
 ```
 
 License
